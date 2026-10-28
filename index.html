@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0d0f14">
+<title>2048 · 可撤回</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <h1>2048</h1>
+      <p class="tagline">合并数字 · 冲击 2048</p>
+    </div>
+    <div class="scores">
+      <div class="score-box">
+        <span class="label">得分</span>
+        <span class="value" id="score">0</span>
+      </div>
+      <div class="score-box">
+        <span class="label">最高</span>
+        <span class="value" id="best">0</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button class="btn primary" id="btn-new" type="button">新游戏</button>
+    <button class="btn" id="btn-undo" type="button" disabled>撤回 <span class="count" id="undo-badge">0</span></button>
+  </div>
+
+  <div class="board" id="board">
+    <div class="bg-grid" id="grid"></div>
+    <div class="tile-layer" id="tiles"></div>
+
+    <div class="overlay" id="overlay">
+      <div class="overlay-card">
+        <h2 id="overlay-title">游戏结束</h2>
+        <p id="overlay-text">没有可以移动的方向了</p>
+        <div class="overlay-actions">
+          <button class="btn" id="ov-undo" type="button">撤回一步</button>
+          <button class="btn primary" id="ov-new" type="button">重新开始</button>
+          <button class="btn primary" id="ov-continue" type="button">继续挑战</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="stats">
+    <span>本局 <b id="round-time">00:00</b></span>
+    <i>·</i>
+    <span>总计 <b id="total-time">00:00</b></span>
+  </p>
+
+  <p class="hint">
+    <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> 或 <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移动 · 手机滑动 · <kbd>Z</kbd> 撤回
+  </p>
+
+  <p class="save-line">
+    <span class="dot" id="save-dot"></span>
+    <span id="save-text">进度自动保存在本机</span>
+  </p>
+</div>
+
+<div class="credit">小杨制作</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="scripts/store.js"></script>
+<script src="scripts/game.js"></script>
+<script src="scripts/app.js"></script>
+</body>
+</html>
